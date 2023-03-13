@@ -14,7 +14,7 @@ function AdminCarouselPage() {
     formData.append('image', image);
     formData.append('title', title);
 
-    fetch('/api/carousel', {
+    fetch('../../api/carousel', {
       method: 'POST',
       body: formData,
     })

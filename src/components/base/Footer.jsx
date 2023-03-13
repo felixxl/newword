@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-bootstrap';
 import axios from 'axios';
 import "../../assets/scss/components/Footer.scss"
 
@@ -49,14 +50,18 @@ function Footer() {
 
   return (
     <footer>
-      {showProgress && (
-        <button className="scroll-to-top" onClick={scrollToTop}>
-          <i className="fas fa-arrow-up"></i>
-        </button>
-      )}
+      {/* {showProgress && (
+        // <button className="scroll-to-top" onClick={scrollToTop}>
+        //   <i className="fas fa-arrow-up"></i>
+        // </button>
+      )} */}
       <nav>
         <ul>
-          <li><a href="#">Accueil</a></li>
+          <li>
+            <NavLink to="/admin" activeClassName="active" className="navbar-link">
+              Admin
+            </NavLink>
+          </li>
           <li><a href="#">À propos</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
@@ -67,7 +72,7 @@ function Footer() {
         <a href="#"><i className="fab fa-instagram"></i></a>
       </div>
       <div className="subscribe">
-        <h3>Abonnez-vous à notre newsletter</h3>
+        <h3 className="abo">Abonnez-vous à notre newsletter</h3>
         <form onSubmit={handleSubmit}>
           <label htmlFor="email">Adresse e-mail</label>
           <input type="email" id="email" name="email" value={email} onChange={handleEmailChange} />
