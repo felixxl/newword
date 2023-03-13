@@ -1,21 +1,21 @@
-// Footer Styles
+/* Footer Styles */
 
 footer {
-  background-color: #f2f2f2;
+  background-color: #2B475E;
   padding: 50px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   font-size: 16px;
-  color: #444;
+  color: #84B8B1;
   box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
   margin-top: 50px;
-  
+
   .logo {
     font-weight: bold;
     font-size: 24px;
-    color: #333;
+    color: #84B8B1; 
     margin-bottom: 20px;
   }
 
@@ -29,12 +29,14 @@ footer {
       margin-right: 20px;
 
       a {
-        color: #444;
+        color: #84B8B1;
         text-decoration: none;
         transition: all 0.3s ease;
+        transform: translateY(0);
 
         &:hover {
-          color: #777;
+          color: #80C646;
+          transform: translateY(-3px);
         }
       }
     }
@@ -53,21 +55,21 @@ footer {
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background-color: #444;
+      background-color: #84B8B1;
       margin-right: 10px;
       transition: all 0.3s ease;
 
       &:hover {
-        background-color: #777;
+        background-color: #80C646;
 
         i {
-          color: #fff;
+          color: #84B8B1;
         }
       }
 
       i {
         font-size: 18px;
-        color: #fff;
+        color: #84B8B1;
       }
     }
   }
@@ -128,4 +130,7 @@ footer {
     font-size: 14px;
     color: #777;
   }
+}
+.abo {
+  align-items: center ;
 }

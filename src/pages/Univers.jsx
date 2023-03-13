@@ -10,7 +10,7 @@ const Info = () => {
         height: '90vh'
       }}
     >
-      <h1>Info</h1>
+      <h1>Univers</h1>
     </div>
   );
 };

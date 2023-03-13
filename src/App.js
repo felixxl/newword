@@ -7,7 +7,7 @@ import Univers from './pages/Univers';
 import Activites from './pages/Activites';
 import Chambre from './pages/Chambre';
 import SignUp from './pages/Signup';
-
+import Admin from './pages/admin/index'
 
 
 function App() {
@@ -17,9 +17,10 @@ function App() {
       <Routes>
         <Route path='/Index' element={<Index/>}/>
         <Route path='/Univers' element={<Univers/>}/>
-        <Route path='/activites' element={<Activites/>}/>
-        <Route path='/chambre' element={<Chambre/>}/>
-        <Route path='/sign-up' element={<SignUp/>}/>
+        <Route path='/Activites' element={<Activites/>}/>
+        <Route path='/Chambre' element={<Chambre/>}/>
+        <Route path='/Sign-up' element={<SignUp/>}/>
+        <Route path='/Admin' element={<Admin/>}/>
       </Routes>
       <Footer/>
     </Router>
