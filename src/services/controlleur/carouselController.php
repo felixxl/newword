@@ -25,7 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $targetFile = $targetDir . basename($_FILES['image']['name']);
   $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
-  // Vérification du type de fichier
   if ($imageFileType !== 'jpg' && $imageFileType !== 'jpeg' && $imageFileType !== 'png') {
     http_response_code(400);
     exit;

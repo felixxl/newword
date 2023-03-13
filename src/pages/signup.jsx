@@ -1,5 +1,5 @@
 import React from 'react';
-import AddImage from './admin/index'
+import AddImage from './admin'
 
 const SignUp = () => {
   return (

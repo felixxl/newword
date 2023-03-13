@@ -1,42 +1,41 @@
 import React from 'react';
-import {
-  Nav,
-  NavLink,
-  Bars,
-  NavMenu,
-  NavBtn,
-  NavBtnLink
-} from '../NavbarElements';
+import { NavLink } from 'react-router-dom';
+import '../../assets/scss/components/NavBar.scss';
+import logo from '../../assets/images/logo.png';
 
 const Navbar = () => {
   return (
-    <>
-      <Nav>
-        <NavLink to='/'>
-          <img src={require('../../assets/images/logo.svg')} alt='logo' />
+    <nav className="navbar">
+      <div className="navbar-container">
+        <NavLink exact to="/" className="navbar-logo">
+          <div className="logo-image">
+            <img src={logo} alt="Logo" class="imghead" />
+          </div>
         </NavLink>
-        <Bars />
-        <NavMenu>
-          <NavLink to='/Info' activeStyle>
-            Info
-          </NavLink>
-          <NavLink to='/Activites' activeStyle>
-          Activites
-          </NavLink>
-          <NavLink to='/contact-us' activeStyle>
-            Contact Us
-          </NavLink>
-          <NavLink to='/sign-up' activeStyle>
-            Sign Up
-          </NavLink>
-          {/* Second Nav */}
-          {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
-        </NavMenu>
-        <NavBtn>
-          <NavBtnLink to='/signin'>Sign In</NavBtnLink>
-        </NavBtn>
-      </Nav>
-    </>
+        <ul className="navbar-menu">
+          <li className="navbar-item">
+            <NavLink exact to="/" activeClassName="active" className="navbar-link">
+              Accueil
+            </NavLink>
+          </li>
+          <li className="navbar-item">
+            <NavLink to="/chambres" activeClassName="active" className="navbar-link">
+              Chambres
+            </NavLink>
+          </li>
+          <li className="navbar-item">
+            <NavLink to="/activites" activeClassName="active" className="navbar-link">
+              Activités
+            </NavLink>
+          </li>
+          <li className="navbar-item">
+            <NavLink to="/univers" activeClassName="active" className="navbar-link">
+              Univers
+            </NavLink>
+          </li>
+        </ul>
+      </div>
+    </nav>
   );
 };
 

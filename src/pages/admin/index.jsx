@@ -2,7 +2,7 @@ import React from 'react';
 import AdminCarousel from './AdminCarousel'
 import CreateArticle from './CreateArticle'
 
-const SignUp = () => {
+const index = () => {
   return (
     <div
       style={{
@@ -18,4 +18,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default index;
