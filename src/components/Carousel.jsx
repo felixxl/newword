@@ -1,9 +1,19 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React, { useState, useEffect } from "react";
 import "../assets/scss/components/Carousel.scss";
+import { getCarouselImages } from "../services/carouselService";
 
-const Carousel = ({ images }) => {
+const Carousel = () => {
+  const [images, setImages] = useState([]);
   const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    const getImages = async () => {
+      const carouselImages = await getCarouselImages();
+      setImages(carouselImages);
+    };
+
+    getImages();
+  }, []);
 
   const handlePreviousClick = () => {
     const previousImage =
@@ -16,29 +26,36 @@ const Carousel = ({ images }) => {
       currentImage === images.length - 1 ? 0 : currentImage + 1;
     setCurrentImage(nextImage);
   };
+  console.log('Image data:', images);
+console.log('Current image file path:', images.length > 0 ? images[currentImage].file_path.substring(2) : '');
 
   return (
-    <div className="carousel-container">
-      <button
-        className="carousel-button previous"
-        onClick={handlePreviousClick}
-      >
-        &lt;
-      </button>
-      <img
-        src={images[currentImage]}
-        alt={`${currentImage}`}
-        className="carousel-image"
-      />
-      <button className="carousel-button next" onClick={handleNextClick}>
-        &gt;
-      </button>
+    <div className="carousel-wrapper">
+      <div className="carousel-container">
+        <button
+          className="carousel-button previous"
+          onClick={handlePreviousClick}
+        >
+          &lt;
+        </button>
+        {images.length > 0 && (
+          <>
+          <img
+            src={`http://localhost:8000/api/carousel/upload?path=${images[currentImage].file_path.replace('upload/', '')}`}
+            alt={`${currentImage}`}
+            className="carousel-image"
+          />
+
+            <div className="carousel-title">{images[currentImage].title}</div>
+          </>
+        )}
+        <button className="carousel-button next" onClick={handleNextClick}>
+          &gt;
+        </button>
+      </div>
     </div>
   );
 };
 
-Carousel.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-};
 
 export default Carousel;

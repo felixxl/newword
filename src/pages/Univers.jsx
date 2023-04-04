@@ -1,16 +1,12 @@
 import React from 'react';
+import Artc from "../components/Artc"
+import "../assets/scss/pages/Univers.scss"
 
 const Info = () => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '90vh'
-      }}
-    >
-      <h1>Univers</h1>
+    <div className='background'>
+      <h1 className='Tilte'>Univers</h1>
+      <Artc/>
     </div>
   );
 };

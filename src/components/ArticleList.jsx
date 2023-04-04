@@ -1,40 +1,33 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import { getArticles } from '../services/articleService';
+import "../assets/scss/components/ArticleList.scss"
 
-class ArticleList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      articles: []
-    };
-  }
 
-  componentDidMount() {
-    axios.get('/api/articles')
-      .then(response => {
-        this.setState({ articles: response.data });
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
+function ArticleList() {
+  const [articles, setArticles] = useState([]);
 
-  render() {
-    const { articles } = this.state;
-    return (
-      <div>
-        <h1>Liste des articles</h1>
-        <ul>
-          {articles.map(article => (
-            <li key={article.id}>
-              <h2>{article.title}</h2>
-              <p>{article.content}</p>
-            </li>
-          ))}
-        </ul>
+  useEffect(() => {
+    getArticles()
+      .then(data => setArticles(data));
+  }, []);
+
+  return (
+    <div className="container-article">
+      <div className="row">
+        {articles.map(article => (
+          <div className="col-md-4 mb-4" key={article.id}>
+            <a href={`/article/${article.id}`} className="article-link">
+              <div>
+                <h2 className='NameOfArticle'>{article.title}</h2>
+                <p>Organisateur:</p>
+                <p>{article.organizer}</p>              
+              </div>
+            </a>
+          </div>
+        ))}
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default ArticleList;
