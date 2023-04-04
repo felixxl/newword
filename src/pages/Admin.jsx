@@ -1,6 +1,6 @@
 import React from 'react';
-import AdminCarousel from './AdminCarousel'
-import CreateArticle from './CreateArticle'
+import AdminCarousel from './admin/AdminCarousel'
+import CreateArticle from './admin/CreateArticle'
 
 const index = () => {
   return (

@@ -1,5 +1,4 @@
 import React from 'react';
-import AddImage from './admin'
 
 const SignUp = () => {
   return (
@@ -11,7 +10,7 @@ const SignUp = () => {
         height: '90vh'
       }}
     >
-      <h1><AddImage/></h1>
+      
     </div>
   );
 };

@@ -59,7 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
   <h1>Inscription Admin</h1>
   <?php if (!empty($errors)): ?>
-    <div class="errors">
+    <!-- <div className="errors"> -->
+      <div>
       <?php foreach ($errors as $error): ?>
         <p><?php echo $error; ?></p>
       <?php endforeach; ?>

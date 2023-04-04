@@ -37,9 +37,9 @@ function Footer() {
       });
   };
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
+  // const handleEmailChange = (e) => {
+  //   setEmail(e.target.value);
+  // };
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -50,33 +50,40 @@ function Footer() {
 
   return (
     <footer>
-      {/* {showProgress && (
-        // <button className="scroll-to-top" onClick={scrollToTop}>
-        //   <i className="fas fa-arrow-up"></i>
-        // </button>
-      )} */}
+      {showProgress && (
+        <p onClick={scrollToTop}>
+        </p>
+      )}
       <nav>
         <ul>
           <li>
-            <NavLink to="/admin" activeClassName="active" className="navbar-link">
+            <NavLink to="/Admin" activeclassname="active" className="navbar-link">
               Admin
             </NavLink>
           </li>
-          <li><a href="#">À propos</a></li>
-          <li><a href="#">Contact</a></li>
+          <li>
+            <NavLink to="/chambre" activeclassname="active" className="navbar-link">
+              Chambres
+            </NavLink>
+          </li>
+          <li>
+            <NavLink exact="true" to="/" activeclassname="active" className="navbar-link">
+              Accueil
+            </NavLink>
+          </li>
         </ul>
       </nav>
       <div className="social-icons">
-        <a href="#"><i className="fab fa-facebook-f"></i></a>
-        <a href="#"><i className="fab fa-twitter"></i></a>
-        <a href="#"><i className="fab fa-instagram"></i></a>
+        <a href="Chambre"><i className="fab fa-facebook-f"></i></a>
+        <a href="Chambre"><i className="fab fa-twitter"></i></a>
+        <a href="Chambre"><i className="fab fa-instagram"></i></a>
       </div>
       <div className="subscribe">
-        <h3 className="abo">Abonnez-vous à notre newsletter</h3>
+        <h3 className="abo">Contacter-nous</h3>
         <form onSubmit={handleSubmit}>
-          <label htmlFor="email">Adresse e-mail</label>
-          <input type="email" id="email" name="email" value={email} onChange={handleEmailChange} />
-          <button type="submit">S'abonner</button>
+          {/* <label htmlFor="email">Adresse e-mail</label> */}
+          {/* <input type="email" id="email" name="email" value={email} onChange={handleEmailChange} /> */}
+          <button type="submit">Mon-mail@hotmail.fr</button>
         </form>
       </div>
     </footer>

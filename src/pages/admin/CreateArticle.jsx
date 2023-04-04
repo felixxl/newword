@@ -1,58 +1,74 @@
 import React, { useState } from 'react';
 
-function AdminPage() {
+const CreateArticle = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [animator, setAnimator] = useState('');
-  const [photo, setPhoto] = useState(null);
+  const [price, setPrice] = useState('');
+  const [organizer, setOrganizer] = useState('');
+  const [schedule, setSchedule] = useState('');
+  const [image, setImage] = useState(null);
+  const [successMessage, setSuccessMessage] = useState('');
 
-  const handleTitleChange = event => setTitle(event.target.value);
-  const handleDescriptionChange = event => setDescription(event.target.value);
-  const handleAnimatorChange = event => setAnimator(event.target.value);
-  const handlePhotoChange = event => setPhoto(event.target.files[0]);
-
-  const handleSubmit = event => {
-    event.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
     const formData = new FormData();
     formData.append('title', title);
     formData.append('description', description);
-    formData.append('animator', animator);
-    formData.append('photo', photo);
+    formData.append('price', price);
+    formData.append('organizer', organizer);
+    formData.append('schedule', schedule);
+    if (image) {
+      formData.append('image', image);
+    }
 
-    fetch('/api/articles', {
+    fetch('http://127.0.0.1:8000/article/articles.php', {
       method: 'POST',
       body: formData,
     })
       .then(response => response.json())
-      .then(data => console.log(data))
-      .catch(error => console.error(error));
+      .then(data => {
+        console.log(data);
+        setSuccessMessage('Article créé avec succès');
+      })
+      .catch(error => {
+        console.error('Erreur lors de la création de l\'article:', error);
+      });
   };
 
   return (
-    <div className="container">
-      <h1>Admin</h1>
+    <div>
+      <h1>Créer un article</h1>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="title">Title</label>
-          <input type="text" className="form-control" id="title" value={title} onChange={handleTitleChange} required />
-        </div>
-        <div className="form-group">
-          <label htmlFor="description">Description</label>
-          <textarea className="form-control" id="description" value={description} onChange={handleDescriptionChange} required></textarea>
-        </div>
-        <div className="form-group">
-          <label htmlFor="animator">Animator</label>
-          <input type="text" className="form-control" id="animator" value={animator} onChange={handleAnimatorChange} required />
-        </div>
-        <div className="form-group">
-          <label htmlFor="photo">Photo</label>
-          <input type="file" className="form-control-file" id="photo" accept="image/*" onChange={handlePhotoChange} required />
-        </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
-      </form>
-    </div>
+        <label>
+          Titre:
+          <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+        </label>
+        <label>
+          Description:
+          <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+        </label>
+        <label>
+          Prix:
+          <input type="number" step="0.01" value={price} onChange={(e) => setPrice(e.target.value)} />
+        </label>
+        <label>
+          Organisateur:
+          <input type="text" value={organizer} onChange={(e) => setOrganizer(e.target.value)} />
+        </label>
+        <label>
+          Horaires:
+          <textarea value={schedule} onChange={(e) => setSchedule(e.target.value)} />
+        </label>
+        <label>
+          Image:
+          <input type="file" onChange={(e) => setImage(e.target.files[0])} />
+        </label>
+        <button type="submit">Créer l'article</button>
+    </form>
+    {successMessage && <div className="alert alert-success mt-3">{successMessage}</div>}
+  </div>
   );
 }
 
-export default AdminPage;
+export default CreateArticle;
